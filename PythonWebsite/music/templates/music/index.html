@@ -1,0 +1,33 @@
+<html>
+<body>
+{% extends 'music/base.html' %}
+{% load staticfiles %}
+{% block body %}
+{% if all_albums %}
+<h3>My Albums:</h3>
+ <div class="content container">
+            <div class="row">
+                {% for album in all_albums %}
+                <div class="col-md-3 col-sm-6">
+                    <img src="{{album.album_logo.url}}" height="150px" width="150px">
+                    <h3>{{ album.album_title }}</h3>
+                    <h4>{{ album.artist }}</h4>
+                    <a href="{% url 'detail' album.id %}"class="btn btn-primary btn-sm" role="button">View Detail</a>
+                    <form action="{%url 'album_delete' album.id %}" method="post">
+                        <button type="submit" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </form>
+                    <a href="#">
+                        <img src="{% static 'music/images/favourite.jpeg' %}", height="25px" width="25px">
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+{% else %}
+  <h3>You do not have any album</h3>
+{% endif %}
+{% endblock %}
+</body>
+</html>

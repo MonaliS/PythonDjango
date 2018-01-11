@@ -1,0 +1,25 @@
+body{
+   width: 100%;
+   min-height: 100%;
+   margin: 0;
+   background: white url("images/background.jpg");
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+}
+html{
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+h3{
+  color: black;
+}
+
+.navbar{
+  border-radius: 0;
+}
+
+.navbar-brand{
+  font-family:'Satisfy', cursive;
+}

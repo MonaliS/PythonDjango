@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+{% extends 'music/base.html' %}
+{% block title %}Album Details {% endblock %}
+{% block body %}
+<img src={{album.album_logo.url}} height='250px'; width='250px'>
+<h1>{{ album.album_title }}</h1>
+
+{% if error_message %}
+  <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+<form action="{% url 'favourite' album.id %}" method="post">
+    {% for song in album.song_set.all %}
+      <input type="radio" id="song{{ forloop.counter }}" name="song" value="{{ song.id }}">
+      <label for="song{{ forloop.counter }}">
+          {{song.song_title}}
+          {% if song.is_favourite %}
+              <img src="http://nicklewiscommunications.com/wp-content/uploads/2014/02/shutterstock_1764811521.jpg" height="16px" width="16px">
+          {% endif%}
+      </label>
+      <br>
+    {% endfor %}
+    <input type="submit" value="favourite">
+</form>
+{% endblock %}
+</body>
+</html>
